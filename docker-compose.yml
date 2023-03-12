@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  wallet-ui:
+    image: wallet-ui:latest
+    container_name: wallet-ui
+    build:
+      args:
+        WALLET_UI_URL: "http://127.0.0.1:8080/"
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: "bridge"
